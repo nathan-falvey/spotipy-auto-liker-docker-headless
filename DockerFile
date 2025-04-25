@@ -1,0 +1,15 @@
+FROM python:3.11-slim-buster
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY main.py .
+
+ENV SPOTIPY_APP_USER=""
+ENV SPOTIFY_APP_SECRET=""
+ENV AUTO_LIKER_MINIMUM_PERCENT=90
+
+CMD ["python", "main.py"]
